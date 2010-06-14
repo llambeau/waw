@@ -40,7 +40,7 @@ module Waw
       def ajax_link(arguments = {})
         buffer = ""
         arguments.each_pair {|k, v| buffer << ", '#{k}' : '#{v}'"}
-        "javascript:#{id}({#{buffer[2..-1]}}, '##{id}')"
+        "javascript:void(#{id}({#{buffer[2..-1]}}, '##{id}'))"
       end
       
       # Factors the ajax code for preparing a formulary
