@@ -17,14 +17,14 @@ module Waw
     def call(env)
       status, headers, body = @app.call(env)
       header = {} if headers.nil?
-      headers['Content-Type'] = 'application/json' if headers['Content-Type'].nil? 
+      headers['Content-Type'] = 'text/plain' if headers['Content-Type'].nil? 
       body = ::JSON.generate(body) if json_response?(headers)
       [status, headers, body]
     end
 
     # Do i need to encode as JSON?
     def json_response?(headers)
-      (headers['Content-Type'] == 'application/json')
+      (headers['Content-Type'] == 'text/plain')
     end
 
   end # class JSONController
