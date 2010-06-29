@@ -71,7 +71,7 @@ module Waw
         when :log_frequency
           config_error(name, "Bad log_frequency #{value}") unless %w{daily weekly monthly}.include?(value)
         when :web_domain, :web_base
-          config_error(name, "web_domain is expected to be a string") unless String===value
+          config_error(name, "web_domain is expected to be a string") unless String===value or Proc===value  
         when :rack_session
           config_error(name, "rack_session is expected to be true or false") unless true==value or false==value
         when :rack_session_expire
